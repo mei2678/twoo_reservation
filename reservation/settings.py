@@ -76,9 +76,9 @@ WSGI_APPLICATION = 'reservation.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django-db',
-        'USER': 'django',
-        'PASSWORD': 'django',
+        'NAME': os.environ.get('MYSQL_DATABASE'),
+        'USER': os.environ.get('MYSQL_ROOT_USER'),
+        'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
         'HOST': 'db',
         'PORT': '3306'
     }

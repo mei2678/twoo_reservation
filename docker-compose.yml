@@ -3,7 +3,7 @@ services:
   db:
     container_name: mysql
     image: mysql
-    restart: always #コンテナ停止時は常に再起動する
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -11,15 +11,25 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+      - db_data:/var/lib/mysql
   
   django:
     container_name: django
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    environment:  # 環境変数を設定
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
+
+volumes:
+  db_data:
 
