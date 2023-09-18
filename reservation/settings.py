@@ -18,7 +18,8 @@ INSTALLED_APPS = [
     'menus.apps.MenusConfig',
     'reservations.apps.ReservationsConfig',
     'users.apps.UsersConfig',
-    'slots.apps.SlotsConfig'
+    'slots.apps.SlotsConfig',
+    'notifications.apps.NotificationsConfig'
 ]
 
 MIDDLEWARE = [
@@ -51,10 +52,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reservation.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -67,9 +64,6 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'users.User'
-
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -91,10 +85,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'ja'
 
 TIME_ZONE = 'Asia/Tokyo'
@@ -104,9 +94,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
