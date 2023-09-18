@@ -1,0 +1,18 @@
+{% extends './base.html' %}
+
+{% block contents %}
+  <div id="wrap" class="clearfix">
+    <div class="content">
+      <div class="main">
+        <section class="career">
+        <h1>登録完了</h1>
+        <div>メニューの新規登録が完了しました。</div>
+      </section>
+
+ <table>
+    <tr>
+        <td><p class="btn"><a href="{% url 'menus:create' %}">メニュー登録</a></td>
+    </tr>
+  </table> 
+  </div>
+{% endblock %}
