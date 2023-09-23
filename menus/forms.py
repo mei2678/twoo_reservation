@@ -8,5 +8,7 @@ class MenuForm(forms.ModelForm):
     """
     class Meta:
         model = Menus
-        fields = ["name", "description", "price", "duration",
-                 "caution", "is_option"]
+        fields = ["name", "description", "price", "duration", "caution",
+                  "is_option"]
+
+
