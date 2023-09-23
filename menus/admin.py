@@ -1,3 +1,5 @@
 from django.contrib import admin
+from menus.models import Menus, Cautions
 
-# Register your models here.
+admin.site.register(Menus)
+admin.site.register(Cautions)

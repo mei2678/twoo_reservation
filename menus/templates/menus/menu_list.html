@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+{% block contents %}
+<div id="wrap" class="clearfix">
+    <div class="content">
+        <div class="main">
+            <h1>メニュー一覧</h1>
+            {% for item in object_list %}
+            <section>
+                <h1>{{ item.name }}</h1>
+                <ul>
+                    {% if item.description %}
+                        <p>{{ item.description }}</p>
+                    {% endif %}
+                    <li>
+                        <div class="price">価格: {{ item.price }}円</div>
+                    </li>
+                    <li>
+                        <div class="duration">施術時間: {{ item.duration }}分</div>
+                    </li>
+                    {% if item.caution %}
+                        <p><b>注意事項: </b>{{ item.caution.content }}</p>
+                    {% endif %}
+                    {% if item.is_option %}
+                        <p>※オプション</p>
+                    {% endif %}
+                </ul>
+            </section>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
