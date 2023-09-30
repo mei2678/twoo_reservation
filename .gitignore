@@ -1,4 +1,4 @@
 .env
-# Ignore Python compiled files
-*.pyc
 reservation/__pycache__/
+*.pyc
+*.pyo
