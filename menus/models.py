@@ -12,6 +12,9 @@ class Cautions(models.Model):
     created_at = models.DateTimeField(verbose_name="作成日時", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="更新日時", auto_now=True)
 
+    def __str__(self):
+        return self.title
+
 
 class Menus(models.Model):
     class Meta:
@@ -28,3 +31,6 @@ class Menus(models.Model):
     is_option = models.BooleanField(verbose_name="オプション", default=False)
     created_at = models.DateTimeField(verbose_name="作成日時", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="更新日時", auto_now=True)
+
+    def __str__(self):
+        return self.name
