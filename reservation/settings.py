@@ -15,11 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'menus.apps.MenusConfig',
-    'reservations.apps.ReservationsConfig',
-    'users.apps.UsersConfig',
-    'slots.apps.SlotsConfig',
-    'notifications.apps.NotificationsConfig'
+    'rest_framework',
+    'apiv1.apps.Apiv1Config'
 ]
 
 MIDDLEWARE = [
