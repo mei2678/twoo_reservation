@@ -20,7 +20,6 @@ class ReservationsSerializer(serializers.ModelSerializer):
 
 
 class SlotsSerializer(serializers.ModelSerializer):
-    end_time = serializers.DateTimeField(required=False)
     created_by = serializers.CharField(source='user.username', read_only=True)
     updated_by = serializers.CharField(source='user.username', read_only=True)
     reservation = ReservationsSerializer(read_only=True)

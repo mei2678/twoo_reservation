@@ -24,14 +24,13 @@ class ReservationsViewSet(viewsets.ModelViewSet):
         selected_slot_id = reservation_data['slot']
         selected_slot = Slots.objects.get(id=selected_slot_id)
         
-        jst = pytz.timezone('Asia/Tokyo')
-        start_time = selected_slot.start_time.astimezone(jst)
-        end_time = start_time + timedelta(minutes=selected_menu.duration)
+        start_time_utc = selected_slot.start_time
+        end_time_utc = start_time_utc + timedelta(minutes=selected_menu.duration)
 
         matching_slots = Slots.objects.filter(
-            Q(id=selected_slot_id),
-            Q(start_time__gte=start_time, start_time__lt=end_time),
-            Q(end_time__gt=start_time, end_time__lte=end_time),
+            Q(id=selected_slot_id) |
+            Q(start_time__gte=start_time_utc, start_time__lt=end_time_utc) |
+            Q(end_time__gt=start_time_utc, end_time__lte=end_time_utc)
         ).filter(
             is_available=True
         )
