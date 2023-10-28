@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.db import transaction
 from menu_management.models import Menus
 from .models import Reservations, Slots
-from .serializers import ReservationsSerializer, SlotsSerializer
+from .serializers import ReservationsSerializer
 from datetime import timedelta
 import pytz
 
@@ -52,12 +52,3 @@ class ReservationsViewSet(viewsets.ModelViewSet):
         data.is_available = 1
         self.handle_reservation(request)
         return super().update(request, *args, **kwargs)
-
-    
-class SlotsViewSet(viewsets.ModelViewSet):
-    """
-    予約枠の一覧取得・編集を行うエンドポイント
-    """
-    queryset = Slots.objects.all().order_by('start_time')
-    serializer_class = SlotsSerializer
-    permission_classes = [permissions.IsAdminUser]

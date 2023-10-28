@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu_management',
     'auth_management',
-    'booking_management'
+    'booking_management',
+    'slot_management'
 ]
 
 MIDDLEWARE = [
