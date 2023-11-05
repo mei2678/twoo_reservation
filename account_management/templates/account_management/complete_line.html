@@ -1,0 +1,11 @@
+<h1>LINEログイン完了画面</h1>
+
+{% if user.is_authenticated %}
+    <p>ユーザー名: {{ user.username }}</p>
+    <img src="{{ user.icon_url }}">
+    
+    <a href="{% url 'logout' %}">ログアウト</a>
+{% else %}
+    <p>ログインに失敗しました。</p>
+<!-- <a href="{% url 'social:begin' 'line' %}">LINEでログインする</a> -->
+{% endif %}
