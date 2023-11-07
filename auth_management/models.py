@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
-
+# 
 class CustomUserManager(BaseUserManager):
     """
     Custom manager for CustomUser
@@ -37,12 +37,16 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(unique=True, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
     username = models.CharField(max_length=200, unique=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     sns_icon_url = models.URLField(blank=True, null=True)
+    last_name = models.CharField(blank=True, null=True, max_length=200)
+    first_name = models.CharField(blank=True, null=True, max_length=200)
+    last_name_kana = models.CharField(blank=True, null=True, max_length=200)
+    first_name_kana = models.CharField(blank=True, null=True, max_length=200)
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
