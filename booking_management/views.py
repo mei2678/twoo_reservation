@@ -6,7 +6,9 @@ from .models import Reservations, Slots
 from .serializers import ReservationsSerializer
 from datetime import timedelta
 import pytz
-
+from rest_framework.exceptions import ValidationError
+from django.shortcuts import get_object_or_404
+from auth_management.models import CustomUser
 
 class ReservationsViewSet(viewsets.ModelViewSet):
     """
@@ -42,13 +44,22 @@ class ReservationsViewSet(viewsets.ModelViewSet):
                 slot.save()
             except Exception as e:
                 print(f"An error occurred: {e}")
+    
+    def validate_user_field(self, user_id):
+        required_field = ['first_name', 'first_name_kana', 'last_name', 'last_name_kana']
+        user = get_object_or_404(CustomUser, pk=user_id)
+        for field in required_field:
+            if getattr(user, field) in [None, '']:
+                raise ValidationError({field: [f'This field {field} may not be null.']})
         
     def create(self, request, *args, **kwargs):
         self.handle_reservation(request)
+        user_id = request.user.id
+        self.validate_user_field(user_id)
         return super().create(request, *args, **kwargs)
     
     def update(self, request, *args, **kwargs):
-        data = Slots.objects.get(id=1)
-        data.is_available = 1
         self.handle_reservation(request)
+        user_id = request.user.id
+        self.validate_user_field(user_id)
         return super().update(request, *args, **kwargs)
