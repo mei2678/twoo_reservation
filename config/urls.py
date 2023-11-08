@@ -7,5 +7,6 @@ urlpatterns = [
     path('booking_management/', include('booking_management.urls')),
     path('slot_management/', include('slot_management.urls')),
     path('visit_history/', include('visit_history.urls')),
-    path('account_management/', include('account_management.urls'))
+    path('account_management/', include('account_management.urls')),
+    path('auth_management/', include('auth_management.urls'))
 ]
