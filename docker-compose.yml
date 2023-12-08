@@ -36,21 +36,5 @@ services:
       db:
         condition: service_healthy
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    platform: linux/amd64
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-    ports:
-      - "3000:80"
-    volumes:
-      - ./phpmyadmin/sessions:/sessions
-
 volumes:
   db_data:
-
