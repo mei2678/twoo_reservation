@@ -1,11 +1,10 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Menu, MenuItem, useTheme } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Menu, MenuItem } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LogoImage from '../images/twoologo.png';
 
 export const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const theme = useTheme();
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -16,7 +15,12 @@ export const Header = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        height: '20vh'
+      }}
+    >
       <AppBar position='static' elevation={0}>
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>

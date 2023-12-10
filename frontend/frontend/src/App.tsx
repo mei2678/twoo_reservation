@@ -1,3 +1,4 @@
+import { MenuList } from './components/menuList';
 import { Header } from './components/Header';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -17,6 +18,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Header />
+      <MenuList />
     </ThemeProvider>
   );
 };
